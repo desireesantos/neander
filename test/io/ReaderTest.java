@@ -17,28 +17,29 @@ public class ReaderTest {
 
     @Test
     public void thereIsFileInThisPath() throws IOException {
-        file = new Reader("/Users/dsantos/Desktop/enander/enander.txt");
+        file = new Reader("enander.txt");
         Assert.assertTrue(file.getPathFile().endsWith("enander.txt"));
     }
 
     @Test
     public void differentsFile() throws IOException{
-        file = new Reader("/Users/dsantos/Desktop/enander/enander.txt");
-        fileTest = new Reader("/Users/dsantos/Desktop/enander/enanderTest.txt");
+        file = new Reader("enander.txt");
+        fileTest = new Reader("enanderTest.txt");
         Assert.assertFalse(file.equals(fileTest));
     }
 
     @Test
     public void readFirstLineInFile() throws IOException {
-        file = new Reader("/Users/dsantos/Desktop/enander/enander.txt");
+        file = new Reader("enander.txt");
         String[] memory = file.getMemory();
         Assert.assertThat(memory[1], equalTo("00001000"));
     }
 
     @Test
     public void readSecondLineInFile() throws IOException {
-        file = new Reader("/Users/dsantos/Desktop/enander/enander.txt");
+        file = new Reader("enander.txt");
         String[] memory = file.getMemory();
         Assert.assertThat(memory[7], equalTo("11110000"));
     }
+
 }
