@@ -8,7 +8,7 @@ import components.ProgramCounter;
  * User: dsantos
  * Date: 6/16/13  - Time: 6:01 PM
  */
-public class Barramento {
+public class Bus {
     Memory memory;
     Acumulator acc;
     ProgramCounter pc;
