@@ -33,8 +33,7 @@ public class  Processor {
 
             if(isNotNull(nameInstruction))
                 processInstructions(nameInstruction);
-            else
-                break;
+            else break;
         }
     }
 
@@ -45,6 +44,7 @@ public class  Processor {
     }
 
     private boolean isNotNull(String nameInstruction) {
+
         return nameInstruction != null;
     }
 
