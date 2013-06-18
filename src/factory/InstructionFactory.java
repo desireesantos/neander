@@ -4,8 +4,9 @@ import components.Acumulator;
 import components.Memory;
 import components.ProgramCounter;
 import components.instruction.*;
-import components.instruction.enumcodeinstructions.CodeInstruction;
-import exception.WrongInstructionException;
+import components.instruction.WrongInstructionException;
+
+import static components.instruction.enumcodeinstructions.CodeInstruction.*;
 
 /**
  * User: dsantos
@@ -14,29 +15,23 @@ import exception.WrongInstructionException;
  */
 public class InstructionFactory {
 
-
     public Instruction execute(Memory memory, Acumulator acc, ProgramCounter pc, String typeInstruction) {
         Instruction instruction = null;
 
-        if (typeInstruction.equals(CodeInstruction.NOP.toString()))
+        if (typeInstruction.equals(NOP.toString()))
             instruction = new NOP(memory,acc,pc);
-        else if(typeInstruction.equals(CodeInstruction.LDA.toString()))
+        else if(typeInstruction.equals(LDA.toString()))
             instruction = new LDA(memory,acc,pc);
-        else if(typeInstruction.equals(CodeInstruction.ADD.toString()))
+        else if(typeInstruction.equals(ADD.toString()))
             instruction = new ADD(memory,acc,pc);
-        else if(typeInstruction.equals(CodeInstruction.HLT.toString()))
+        else if(typeInstruction.equals(HLT.toString()))
             instruction =  new HLT(memory,acc,pc);
-        else if(typeInstruction.equals(CodeInstruction.STA.toString()))
+        else if(typeInstruction.equals(STA.toString()))
             instruction =  new STA(memory,acc,pc);
         else
         {
-            try {
-                throw new WrongInstructionException();
-            } catch (WrongInstructionException e) {
-                e.printStackTrace();
-            }
+            new WrongInstructionException();
         }
-
         return instruction;
     }
 }
