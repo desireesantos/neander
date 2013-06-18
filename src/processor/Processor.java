@@ -12,7 +12,6 @@ import factory.InstructionFactory;
  * Date: 6/2/13  - Time: 12:09 AM
  */
 public class  Processor {
-
     Memory memory;
     Acumulator acc;
     ProgramCounter pc;
@@ -21,20 +20,31 @@ public class  Processor {
         this.memory = new Memory(memory.getMemory());
         acc = new Acumulator();
         pc = new ProgramCounter();
-
         processInstructions();
     }
 
+
     private void processInstructions() throws WrongPositionMemoryException {
         final int  READ_ONLY_INSTRUCTIONS = 2;
+
         for (int i = 0; i < Memory.MEMORY_SIZE; i= i + READ_ONLY_INSTRUCTIONS) {
             pc.setAddress(i);
+            String nameInstruction = currentInstructionName(memory, pc);
 
-            String nameInstruction = memory.instructionName(memory.getValueMemoryInThisPosition(this.pc.getAddress()));
-            InstructionFactory instructionFactory = new InstructionFactory();
-            Barramento barramento = instructionFactory.execute(memory,acc,pc,nameInstruction).create();
-            updateComponents(barramento);
+            if( isNotNull(nameInstruction)){
+                InstructionFactory instructionFactory = new InstructionFactory();
+                Barramento barramento = instructionFactory.execute(memory,acc,pc,nameInstruction).create();
+                updateComponents(barramento);
+            }
         }
+    }
+
+    private boolean isNotNull(String nameInstruction) {
+        return nameInstruction  != null;
+    }
+
+    private String currentInstructionName(Memory memory, ProgramCounter pc) {
+        return memory.instructionName(memory.getValueMemoryInThisPosition(pc.getAddress()));
     }
 
     private void updateComponents(Barramento instruction) {
