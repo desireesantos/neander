@@ -27,20 +27,25 @@ public class  Processor {
     private void processInstructions() throws WrongPositionMemoryException {
         final int  READ_ONLY_INSTRUCTIONS = 2;
 
-        for (int i = 0; i < Memory.MEMORY_SIZE; i= i + READ_ONLY_INSTRUCTIONS) {
+        for (int i = 0; i <= Memory.MEMORY_SIZE -1; i= i + READ_ONLY_INSTRUCTIONS) {
             pc.setAddress(i);
             String nameInstruction = currentInstructionName(memory, pc);
 
-            if( isNotNull(nameInstruction)){
-                InstructionFactory instructionFactory = new InstructionFactory();
-                Barramento barramento = instructionFactory.execute(memory,acc,pc,nameInstruction).create();
-                updateComponents(barramento);
-            }
+            if(isNotNull(nameInstruction))
+                processInstructions(nameInstruction);
+            else
+                break;
         }
     }
 
+    private void processInstructions(String nameInstruction) throws WrongPositionMemoryException {
+        InstructionFactory instructionFactory = new InstructionFactory();
+        Barramento barramento = instructionFactory.execute(memory,acc,pc,nameInstruction).create();
+        updateComponents(barramento);
+    }
+
     private boolean isNotNull(String nameInstruction) {
-        return nameInstruction  != null;
+        return nameInstruction != null;
     }
 
     private String currentInstructionName(Memory memory, ProgramCounter pc) {
