@@ -3,7 +3,6 @@ package components.instruction;
 import components.Acumulator;
 import components.Memory;
 import components.ProgramCounter;
-import components.WrongPositionMemoryException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,8 +26,9 @@ public class LDATest {
         pc = new ProgramCounter();
         memory.setMemory(0, "00100000");
         memory.setMemory(1, "00000010");
-        memory.setMemory(2, "00000111");
-        memory.setMemory(3, "00000000");
+        memory.setMemory(2, "00000011");
+        memory.setMemory(3, "00000100");
+        memory.setMemory(4, "00000111");
     }
 
     @Test

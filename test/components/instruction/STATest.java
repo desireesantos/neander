@@ -27,19 +27,19 @@ public class STATest {
         pc = new ProgramCounter();
         memory.setMemory(0, "00100000");
         memory.setMemory(1, "00000010");
-        memory.setMemory(2, "00000111");
+        memory.setMemory(2, "00000000");
         memory.setMemory(3, "00000000");
     }
 
     @Test
     public void validCommand() {
         acc.setAcumulator(49);
-        pc.setAddress(1);
+        pc.setAddress(0);
         sta = new STA(memory,acc,pc);
 
         Assert.assertThat(sta.getMemory().getValueMemoryInThisPosition(1),equalTo("00000010"));
         sta.run();
-        Assert.assertThat(sta.getMemory().getValueMemoryInThisPosition(1),equalTo("49"));
+        Assert.assertThat(sta.getMemory().getValueMemoryInThisPosition(2),equalTo("49"));
 
     }
 

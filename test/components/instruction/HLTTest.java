@@ -3,7 +3,6 @@ package components.instruction;
 import components.Acumulator;
 import components.Memory;
 import components.ProgramCounter;
-import components.WrongPositionMemoryException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,6 +31,6 @@ public class HLTTest {
     public void executeHLTCommnand()  {
         Assert.assertThat(pc.getAddress(), equalTo(0));
         hlt.run();
-        Assert.assertThat(hlt.getPc().getAddress(), equalTo(16));
+        Assert.assertThat(hlt.getPc().getAddress(), equalTo(15));
     }
 }

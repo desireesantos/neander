@@ -4,7 +4,6 @@ import components.Acumulator;
 import components.Memory;
 import components.ProgramCounter;
 import control.Bus;
-import components.WrongPositionMemoryException;
 
 /**
  * User: dsantos

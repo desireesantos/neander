@@ -1,6 +1,5 @@
 package io;
 
-import components.Memory;
 import java.io.*;
 
 import static components.Memory.MEMORY_SIZE;

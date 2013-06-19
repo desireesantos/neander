@@ -32,8 +32,4 @@ public class Bus {
     public void setAcc(Acumulator acc) {
         this.acc = acc;
     }
-
-    public void setPc(ProgramCounter pc) {
-        this.pc = pc;
-    }
 }

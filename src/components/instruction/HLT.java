@@ -48,9 +48,6 @@ public class HLT implements Instruction {
     @Override
     public Bus run()  {
         pc.setAddress(LAST_POSITION_IN_MEMORY);
-
-        Monitor monitor = new Monitor();
-        monitor.print(memory);
         return updateBus();
     }
 

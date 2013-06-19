@@ -14,6 +14,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
  * User: dsantos
  * Date: 6/16/13  - Time: 1:11 AM
  */
+
 public class NOPTest {
     Memory memory;
     Acumulator acc;
@@ -31,7 +32,7 @@ public class NOPTest {
     }
 
     @Test
-    public void nopCommandNothingShouldChange(){
+    public void NothingShouldChangeInNOPCommand(){
         acc.setAcumulator(3);
         pc.setAddress(1);
         nop = new NOP(memory,acc,pc);
@@ -40,18 +41,6 @@ public class NOPTest {
         Assert.assertThat(nop.getAcc().getAcumulator(), equalTo(3));
 
     }
-
-    @Test
-    public void nop() {
-        acc.setAcumulator(4);
-        pc.setAddress(1);
-        nop = new NOP(memory,acc,pc);
-        nop.run();
-        Assert.assertThat(nop.getAcc().getAcumulator(), equalTo(3));
-        Assert.assertThat(nop.getAcc().getAcumulator(), equalTo(2));
-
-    }
-
 
 
 }
