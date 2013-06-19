@@ -6,6 +6,7 @@ import components.ProgramCounter;
 import control.Bus;
 import components.WrongPositionMemoryException;
 import factory.InstructionFactory;
+import io.Monitor;
 
 import static components.Memory.MEMORY_SIZE;
 
@@ -37,6 +38,9 @@ public class  Processor {
                 processInstructions(nameInstruction);
             else break;
         }
+
+        Monitor monitor = new Monitor();
+        monitor.print(memory);
     }
 
     private void processInstructions(String nameInstruction) throws WrongPositionMemoryException {
@@ -56,6 +60,5 @@ public class  Processor {
     private void updateComponents(Bus instruction) {
         this.memory = instruction.getMemory();
         this.acc = instruction.getAcc();
-
     }
 }

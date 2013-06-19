@@ -35,7 +35,7 @@ public class STA implements Instruction {
 
     @Override
     public Bus run() {
-        memory.setMemory(pc.getAddress(), String.valueOf(acc.getAcumulator()));
+        memory.setMemory( memory.readAdressInstruction(pc.getAddress()), String.valueOf(acc.getAcumulator()));
         pc.setAddress(setNextPosition());
         return updateBus();
     }

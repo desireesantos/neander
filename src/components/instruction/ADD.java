@@ -41,7 +41,7 @@ public class ADD implements Instruction {
 
     @Override
     public Bus run() {
-        acc.setAcumulator(memory.readAdressInstruction(pc.getAddress()) + acc.getAcumulator());
+        acc.setAcumulator(memory.instruction(memory.readAdressInstruction(pc.getAddress())) + acc.getAcumulator());
         pc.setAddress(setNextPosition());
         return updateBarramento();
     }

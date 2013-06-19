@@ -13,6 +13,10 @@ public class Bus {
     Acumulator acc;
     ProgramCounter pc;
 
+    public ProgramCounter getPc() {
+        return pc;
+    }
+
     public Memory getMemory() {
         return memory;
     }
