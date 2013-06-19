@@ -6,18 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2a08b2c1-853c-4846-b371-7b9dcd0842e1" name="Default" comment="Project enander">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/instruction/ADD.java" afterPath="$PROJECT_DIR$/src/components/instruction/ADD.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/components/instruction/ADDTest.java" afterPath="$PROJECT_DIR$/test/components/instruction/ADDTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control/Bus.java" afterPath="$PROJECT_DIR$/src/control/Bus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/instruction/HLT.java" afterPath="$PROJECT_DIR$/src/components/instruction/HLT.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/components/instruction/HLTTest.java" afterPath="$PROJECT_DIR$/test/components/instruction/HLTTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/components/instruction/LDATest.java" afterPath="$PROJECT_DIR$/test/components/instruction/LDATest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Memory.java" afterPath="$PROJECT_DIR$/src/components/Memory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/instruction/NOP.java" afterPath="$PROJECT_DIR$/src/components/instruction/NOP.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/components/instruction/NOPTest.java" afterPath="$PROJECT_DIR$/test/components/instruction/NOPTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/Reader.java" afterPath="$PROJECT_DIR$/src/io/Reader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/components/instruction/STATest.java" afterPath="$PROJECT_DIR$/test/components/instruction/STATest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/WrongPositionMemoryException.java" afterPath="$PROJECT_DIR$/src/components/WrongPositionMemoryException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Enander.iws" />
     <ignored path=".idea/workspace.xml" />
