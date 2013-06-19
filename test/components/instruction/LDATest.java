@@ -40,7 +40,6 @@ public class LDATest {
         Assert.assertThat(acc.getAcumulator(), equalTo(3));
         lda.run();
         Assert.assertThat(lda.getAcc().getAcumulator(), equalTo(7));
-
     }
 
 }

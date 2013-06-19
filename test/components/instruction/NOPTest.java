@@ -15,7 +15,6 @@ import static org.hamcrest.core.IsEqual.equalTo;
  * Date: 6/16/13  - Time: 1:11 AM
  */
 public class NOPTest {
-
     Memory memory;
     Acumulator acc;
     ProgramCounter pc;
@@ -30,7 +29,6 @@ public class NOPTest {
         memory.setMemory(1, "00000010");
         memory.setMemory(2, "00000111");
     }
-
 
     @Test
     public void nopCommandNothingShouldChange(){

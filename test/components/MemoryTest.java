@@ -47,7 +47,6 @@ public class MemoryTest {
         Assert.assertThat(memory.readAdressInstruction(4), equalTo(15));
     }
 
-
     @Test(expected = WrongPositionMemoryException.class)
     public void exceptionWhenSettingIndexNumberOutOfMemory() {
         memory.setMemory(-1,"00010000");

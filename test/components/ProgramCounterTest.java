@@ -22,7 +22,7 @@ public class ProgramCounterTest {
 
 
     @Test
-    public void validAddress() throws Exception, WrongPositionMemoryException {
+    public void validAddress(){
         Assert.assertThat(pc.getAddress(), equalTo(0));
         pc.setAddress(8);
         Assert.assertThat(pc.getAddress(), equalTo(8));

@@ -19,10 +19,8 @@ public class AddressTest {
         Assert.assertThat(address.getAddress(), equalTo(7));
     }
 
-
     @Test (expected = WrongPositionMemoryException.class)
     public void noValidAddress() throws WrongPositionMemoryException{
         address.setAddress(17);
-
     }
 }
