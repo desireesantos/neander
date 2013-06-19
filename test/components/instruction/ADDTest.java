@@ -4,6 +4,7 @@ import components.Acumulator;
 import components.Memory;
 import components.ProgramCounter;
 import components.WrongPositionMemoryException;
+import control.Bus;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,7 +38,7 @@ public class ADDTest {
         add = new ADD(memory,acc,pc);
         Assert.assertThat(add.getAcc().getAcumulator(), equalTo(2));
         add.run();
-        Assert.assertThat(add.getAcc().getAcumulator(), equalTo(10));
+        Assert.assertThat(add.getAcc().getAcumulator(), equalTo(3));
 
     }
 }
