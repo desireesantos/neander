@@ -3,7 +3,7 @@ package components.instruction;
 import components.Acumulator;
 import components.Memory;
 import components.ProgramCounter;
-import exception.WrongPositionMemoryException;
+import components.WrongPositionMemoryException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,12 +32,12 @@ public class ADDTest {
 
 
     @Test
-    public void hasAddValueInMemory() throws Exception, WrongPositionMemoryException {
+    public void hasAddValueInMemory(){
         acc.setAcumulator(3);
         pc.setAddress(1);
         add = new ADD(memory,acc,pc);
         Assert.assertThat(add.getAcc().getAcumulator(), equalTo(3));
-        add.create();
+        add.run();
         Assert.assertThat(add.getAcc().getAcumulator(), equalTo(10));
 
     }

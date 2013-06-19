@@ -1,6 +1,5 @@
 package components;
 
-import exception.WrongPositionMemoryException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,7 +32,12 @@ public class ProgramCounterTest {
 
 
     @Test (expected =WrongPositionMemoryException.class )
-    public void invalidAddress() throws Exception, WrongPositionMemoryException {
-        pc.setAddress(17);
+    public void throwsExceptionWhenSettingAddressInPositionOutOfMemory() throws WrongPositionMemoryException {
+        pc.setAddress(Memory.MEMORY_SIZE + 1);
+    }
+
+    @Test (expected =WrongPositionMemoryException.class )
+    public void throwsExceptionWhenSettingNegativeIndexInMemory() throws WrongPositionMemoryException {
+        pc.setAddress(-2);
     }
 }

@@ -3,7 +3,7 @@ package components.instruction;
 import components.Acumulator;
 import components.Memory;
 import components.ProgramCounter;
-import exception.WrongPositionMemoryException;
+import components.WrongPositionMemoryException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,7 +32,7 @@ public class HLTTest {
     public void testCreate() throws Exception, WrongPositionMemoryException {
 
         Assert.assertThat(pc.getAddress(), equalTo(0));
-        hlt.create();
+        hlt.run();
         Assert.assertThat(hlt.getPc().getAddress(), equalTo(16));
     }
 }

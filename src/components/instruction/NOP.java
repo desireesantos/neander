@@ -3,8 +3,8 @@ package components.instruction;
 import components.Acumulator;
 import components.Memory;
 import components.ProgramCounter;
-import control.Barramento;
-import exception.WrongPositionMemoryException;
+import control.Bus;
+import components.WrongPositionMemoryException;
 
 /**
  * User: dsantos
@@ -38,20 +38,20 @@ public class NOP implements Instruction {
     }
 
     @Override
-    public Barramento create() {
+    public Bus run() {
         try {
             pc.setAddress(pc.getAddress() + SETUP_NEXTPOSITION );
         } catch (WrongPositionMemoryException e) {
             e.printStackTrace();
         }
-        return updateBarramento();
+        return updateBus();
     }
 
-    private Barramento updateBarramento() {
-        Barramento barramento = new Barramento();
-        barramento.setAcc(acc);
-        barramento.setPc(pc);
-        barramento.setMemory(memory);
-        return barramento;
+    private Bus updateBus() {
+        Bus bus = new Bus();
+        bus.setAcc(acc);
+        bus.setPc(pc);
+        bus.setMemory(memory);
+        return bus;
     }
 }

@@ -1,9 +1,7 @@
 package control;
 
-import components.Acumulator;
 import components.Memory;
-import components.ProgramCounter;
-import exception.WrongPositionMemoryException;
+import components.WrongPositionMemoryException;
 import factory.MemoryFactory;
 import io.Reader;
 import processor.Processor;

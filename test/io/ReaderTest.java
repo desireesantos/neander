@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
@@ -17,29 +16,29 @@ public class ReaderTest {
 
     @Test
     public void thereIsFileInThisPath() throws IOException {
-        file = new Reader("enander.txt");
-        Assert.assertTrue(file.getPathFile().endsWith("enander.txt"));
+        file = new Reader("file/enander.txt");
+        Assert.assertTrue(file.getPathFile().endsWith("file/enander.txt"));
     }
 
     @Test
     public void differentsFile() throws IOException{
-        file = new Reader("enander.txt");
-        fileTest = new Reader("enanderTest.txt");
+        file = new Reader("file/enander.txt");
+        fileTest = new Reader("file/enanderTest.txt");
         Assert.assertFalse(file.equals(fileTest));
     }
 
     @Test
     public void readFirstLineInFile() throws IOException {
-        file = new Reader("enander.txt");
+        file = new Reader("file/enander.txt");
         String[] memory = file.getMemory();
-        Assert.assertThat(memory[1], equalTo("00001000"));
+        Assert.assertThat(memory[0], equalTo("00100000"));
     }
 
     @Test
     public void readSecondLineInFile() throws IOException {
-        file = new Reader("enander.txt");
+        file = new Reader("file/enander.txt");
         String[] memory = file.getMemory();
-        Assert.assertThat(memory[7], equalTo("11110000"));
+        Assert.assertThat(memory[1], equalTo("00001000"));
     }
 
 }

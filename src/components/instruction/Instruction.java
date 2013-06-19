@@ -3,8 +3,7 @@ package components.instruction;
 import components.Acumulator;
 import components.Memory;
 import components.ProgramCounter;
-import control.Barramento;
-import exception.WrongPositionMemoryException;
+import control.Bus;
 
 /**
  * User: dsantos
@@ -12,7 +11,7 @@ import exception.WrongPositionMemoryException;
  */
 public interface Instruction {
 
-    public Barramento create() throws WrongPositionMemoryException;
+    public Bus run() ;
     public Memory getMemory();
     public Acumulator getAcc();
     public ProgramCounter getPc();

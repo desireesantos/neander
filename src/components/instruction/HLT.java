@@ -3,16 +3,17 @@ package components.instruction;
 import components.Acumulator;
 import components.Memory;
 import components.ProgramCounter;
-import control.Barramento;
-import exception.WrongPositionMemoryException;
+import control.Bus;
 import io.Monitor;
+
+import static components.Memory.MEMORY_SIZE;
 
 /**
  * User: dsantos
  * Date: 6/13/13  - Time: 11:13 PM
  */
 public class HLT implements Instruction {
-    public static final int ONE = 1;
+    public static final int LAST_POSITION_IN_MEMORY = MEMORY_SIZE - 1;
     Memory memory;
     Acumulator acc;
     ProgramCounter pc;
@@ -45,19 +46,19 @@ public class HLT implements Instruction {
     }
 
     @Override
-    public Barramento create() throws WrongPositionMemoryException {
-        pc.setAddress(Memory.MEMORY_SIZE - ONE);
+    public Bus run()  {
+        pc.setAddress(LAST_POSITION_IN_MEMORY);
 
         Monitor monitor = new Monitor();
         monitor.print(memory);
-        return updateBarramento();
+        return updateBus();
     }
 
-    private Barramento updateBarramento() {
-        Barramento barramento = new Barramento();
-        barramento.setAcc(acc);
-        barramento.setPc(pc);
-        barramento.setMemory(memory);
-        return barramento;
+    private Bus updateBus() {
+        Bus bus = new Bus();
+        bus.setAcc(acc);
+        bus.setPc(pc);
+        bus.setMemory(memory);
+        return bus;
     }
 }

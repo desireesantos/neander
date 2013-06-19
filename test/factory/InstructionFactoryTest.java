@@ -23,7 +23,7 @@ public class InstructionFactoryTest {
     @Test
     public void createNOP()  {
         String type = String.valueOf(CodeInstruction.NOP);
-        Assert.assertThat((factory.execute(memory,acc, pc, type)).getClass(), is(NOP.class.getClass()));
+        Assert.assertTrue(factory.execute(memory, acc, pc, type) instanceof NOP);
     }
 
     @Test

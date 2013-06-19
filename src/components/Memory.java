@@ -1,7 +1,6 @@
 package components;
 
 import components.instruction.enumcodeinstructions.CodeInstruction;
-import exception.WrongPositionMemoryException;
 
 /**
  * User: dsantos
@@ -11,8 +10,10 @@ public class Memory {
 
     public static final int MEMORY_SIZE = 16;
     public static final int DECIMAL_BASE = 2;
+    public static final int WRONG_POSITION = 0;
+    public static final String NO_NAME = null;
+    public static final int MIN_POSITION = 0;
     private String[] memory = new String[MEMORY_SIZE];
-
 
     public Memory(String[] memory) {
         this.memory = memory;
@@ -25,21 +26,35 @@ public class Memory {
         return memory;
     }
 
-    public void setMemory(int value, String insertValue) {
-        this.memory[value] = insertValue;
+    public void setMemory(int index, String newValue) {
+
+        if(isValidAdress(index))
+            this.memory[index] = newValue;
     }
 
-
     public int readAdressInstruction(int address) {
-        return stringInBinaryFormatBecomeInt(memory[++address]);
+        return isValidAdress(address) ? stringInBinaryFormatBecomeInt(memory[++address]) : WRONG_POSITION;
+    }
+
+    private boolean isValidAdress(int index) {
+        if (index < MEMORY_SIZE && index >= MIN_POSITION)
+            return true;
+        else
+                throw new WrongPositionMemoryException();
+
+
     }
 
     public int instruction(int address) {
-        return stringInBinaryFormatBecomeInt(memory[address]);
+        return isValidAdress(address) ? stringInBinaryFormatBecomeInt(memory[address]) : WRONG_POSITION;
     }
 
     public String getValueMemoryInThisPosition(int index) {
-        return memory[index];
+
+        if(isValidAdress(index))
+            return memory[index];
+
+        return NO_NAME;
     }
 
     public String instructionName(String binaryCode) {
@@ -48,7 +63,7 @@ public class Memory {
                 return codeInstruction.toString();
             }
         }
-        return null;
+        return NO_NAME;
     }
 
     private int stringInBinaryFormatBecomeInt(String s) {

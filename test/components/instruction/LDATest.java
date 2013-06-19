@@ -3,7 +3,7 @@ package components.instruction;
 import components.Acumulator;
 import components.Memory;
 import components.ProgramCounter;
-import exception.WrongPositionMemoryException;
+import components.WrongPositionMemoryException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,7 +38,7 @@ public class LDATest {
         lda = new LDA(memory,acc,pc);
 
         Assert.assertThat(acc.getAcumulator(), equalTo(3));
-        lda.create();
+        lda.run();
         Assert.assertThat(lda.getAcc().getAcumulator(), equalTo(7));
 
     }

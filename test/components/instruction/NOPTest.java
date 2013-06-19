@@ -3,7 +3,7 @@ package components.instruction;
 import components.Acumulator;
 import components.Memory;
 import components.ProgramCounter;
-import exception.WrongPositionMemoryException;
+import components.WrongPositionMemoryException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,7 +38,7 @@ public class NOPTest {
         pc.setAddress(1);
         nop = new NOP(memory,acc,pc);
         Assert.assertThat(nop.getAcc().getAcumulator(), equalTo(3));
-        nop.create();
+        nop.run();
         Assert.assertThat(nop.getAcc().getAcumulator(), equalTo(3));
 
     }

@@ -18,6 +18,7 @@ public class InstructionFactory {
     public Instruction execute(Memory memory, Acumulator acc, ProgramCounter pc, String typeInstruction) {
         Instruction instruction = null;
 
+
         if (typeInstruction.equals(NOP.toString()))
             instruction = new NOP(memory,acc,pc);
         else if(typeInstruction.equals(LDA.toString()))

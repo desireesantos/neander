@@ -3,15 +3,14 @@ package components.instruction;
 import components.Acumulator;
 import components.Memory;
 import components.ProgramCounter;
-import control.Barramento;
-import exception.WrongPositionMemoryException;
+import control.Bus;
 
 /**
  * User: dsantos
  * Date: 6/13/13  - Time: 11:13 PM
  */
 public class ADD implements Instruction {
-    public static final int SETUP_NEXTPOSITION = 1;
+    public static final int ONE = 1;
     Memory memory;
     Acumulator acc;
     ProgramCounter pc;
@@ -32,7 +31,6 @@ public class ADD implements Instruction {
         return pc;
     }
 
-
     public ADD(Memory memory, Acumulator acc, ProgramCounter pc) {
         this.memory = new Memory(memory.getMemory());
         this.acc = new Acumulator(acc.getAcumulator());
@@ -40,21 +38,21 @@ public class ADD implements Instruction {
     }
 
     @Override
-    public Barramento create() {
+    public Bus run() {
         acc.setAcumulator(memory.instruction(memory.readAdressInstruction(pc.getAddress())) + acc.getAcumulator());
-        try {
-            pc.setAddress(pc.getAddress() + SETUP_NEXTPOSITION );
-        } catch (WrongPositionMemoryException e) {
-            e.printStackTrace();
-        }
-        return updateBarramento();
+        pc.setAddress(setNextPosition());
+        return updateBus();
     }
 
-    private Barramento updateBarramento() {
-        Barramento barramento = new Barramento();
-        barramento.setAcc(acc);
-        barramento.setPc(pc);
-        barramento.setMemory(memory);
-        return barramento;
+    private int setNextPosition() {
+        return pc.getAddress() + ONE;
+    }
+
+    private Bus updateBus() {
+        Bus bus = new Bus();
+        bus.setAcc(acc);
+        bus.setPc(pc);
+        bus.setMemory(memory);
+        return bus;
     }
 }

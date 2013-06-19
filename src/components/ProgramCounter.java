@@ -1,6 +1,6 @@
 package components;
 
-import exception.WrongPositionMemoryException;
+import static components.Memory.*;
 
 /**
  * User: dsantos
@@ -8,8 +8,8 @@ import exception.WrongPositionMemoryException;
  */
 public class ProgramCounter {
 
-    public static final int MIN_POSITION = 4;
-    public static final int MAX_POSITION = Memory.MEMORY_SIZE;
+    public static final int MAX_POSITION = MEMORY_SIZE;
+    public static final int MIN_POSITION = 0;
     private int address =0;
 
     public ProgramCounter(int pc) {
@@ -18,7 +18,6 @@ public class ProgramCounter {
 
     public ProgramCounter() {
     }
-
 
     public int getAddress() {
         return address;
@@ -32,6 +31,6 @@ public class ProgramCounter {
     }
 
     private boolean isValid(int address) {
-        return  address <=MAX_POSITION;
+        return  address >= MIN_POSITION && address <= MAX_POSITION;
     }
 }
