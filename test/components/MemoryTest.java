@@ -1,9 +1,11 @@
 package components;
 
+import components.instruction.enumcodeinstructions.CodeInstruction;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 /**
@@ -26,7 +28,7 @@ public class MemoryTest {
 
     @Test
     public void inputStringBinaryCodeAndGetInstructionName() throws Exception {
-        Assert.assertThat(String.valueOf(memory.instructionName("00000000")), equalTo("NOP"));
+        Assert.assertThat(memory.instructionName("00000000"), is(CodeInstruction.NOP.name()));
         Assert.assertThat(String.valueOf(memory.instructionName("00100000")), equalTo("LDA"));
         Assert.assertThat(String.valueOf(memory.instructionName("00010000")), equalTo("STA"));
         Assert.assertThat(String.valueOf(memory.instructionName("00110000")), equalTo("ADD"));
@@ -41,7 +43,13 @@ public class MemoryTest {
     }
 
     @Test
-    public void giveAddressToGetInformation() throws Exception {
+    public void giveAddressToGetInformation() {
         Assert.assertThat(memory.readAdressInstruction(4), equalTo(15));
+    }
+
+    @Test(expected = WrongPositionMemoryException.class)
+    public void exceptionWhenSettingIndexNumberOutOfMemory() {
+        memory.getValueMemoryInThisPosition(-1);
+        memory.setMemory(-1,"00010000");
     }
 }
