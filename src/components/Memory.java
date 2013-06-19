@@ -40,7 +40,7 @@ public class Memory {
         if (index < MEMORY_SIZE && index >= MIN_POSITION)
             return true;
         else
-                throw new WrongPositionMemoryException();
+            throw new WrongPositionMemoryException();
 
 
     }

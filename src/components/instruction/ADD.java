@@ -4,13 +4,14 @@ import components.Acumulator;
 import components.Memory;
 import components.ProgramCounter;
 import control.Bus;
+import components.WrongPositionMemoryException;
 
 /**
  * User: dsantos
  * Date: 6/13/13  - Time: 11:13 PM
  */
 public class ADD implements Instruction {
-    public static final int ONE = 1;
+    public static final int SETUP_NEXTPOSITION = 1;
     Memory memory;
     Acumulator acc;
     ProgramCounter pc;
@@ -31,6 +32,7 @@ public class ADD implements Instruction {
         return pc;
     }
 
+
     public ADD(Memory memory, Acumulator acc, ProgramCounter pc) {
         this.memory = new Memory(memory.getMemory());
         this.acc = new Acumulator(acc.getAcumulator());
@@ -39,19 +41,18 @@ public class ADD implements Instruction {
 
     @Override
     public Bus run() {
-        acc.setAcumulator(memory.instruction(memory.readAdressInstruction(pc.getAddress())) + acc.getAcumulator());
+        acc.setAcumulator(memory.readAdressInstruction(pc.getAddress()) + acc.getAcumulator());
         pc.setAddress(setNextPosition());
-        return updateBus();
+        return updateBarramento();
     }
 
     private int setNextPosition() {
-        return pc.getAddress() + ONE;
+        return pc.getAddress() + SETUP_NEXTPOSITION;
     }
 
-    private Bus updateBus() {
+    private Bus updateBarramento() {
         Bus bus = new Bus();
         bus.setAcc(acc);
-        bus.setPc(pc);
         bus.setMemory(memory);
         return bus;
     }

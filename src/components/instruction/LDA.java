@@ -39,7 +39,7 @@ public class LDA implements Instruction {
 
     @Override
     public Bus run() {
-        acc.setAcumulator(memory.instruction(memory.readAdressInstruction(pc.getAddress())));
+        acc.setAcumulator(memory.instruction(pc.getAddress()));
         pc.setAddress(setNextPosition());
         return updateBus();
     }
@@ -51,7 +51,6 @@ public class LDA implements Instruction {
     private Bus updateBus() {
         Bus bus = new Bus();
         bus.setAcc(acc);
-        bus.setPc(pc);
         bus.setMemory(memory);
 
         return bus;

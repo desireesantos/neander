@@ -39,19 +39,18 @@ public class NOP implements Instruction {
 
     @Override
     public Bus run() {
-        try {
-            pc.setAddress(pc.getAddress() + SETUP_NEXTPOSITION );
-        } catch (WrongPositionMemoryException e) {
-            e.printStackTrace();
-        }
+        pc.setAddress(setNextPosition());
         return updateBus();
     }
 
     private Bus updateBus() {
         Bus bus = new Bus();
         bus.setAcc(acc);
-        bus.setPc(pc);
         bus.setMemory(memory);
         return bus;
+    }
+
+    private int setNextPosition() {
+        return pc.getAddress() + SETUP_NEXTPOSITION;
     }
 }

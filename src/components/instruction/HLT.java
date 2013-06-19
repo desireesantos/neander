@@ -57,7 +57,6 @@ public class HLT implements Instruction {
     private Bus updateBus() {
         Bus bus = new Bus();
         bus.setAcc(acc);
-        bus.setPc(pc);
         bus.setMemory(memory);
         return bus;
     }
