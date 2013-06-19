@@ -33,13 +33,24 @@ public class NOPTest {
 
 
     @Test
-    public void nopCommandNothingShouldChange() throws Exception, WrongPositionMemoryException {
+    public void nopCommandNothingShouldChange(){
         acc.setAcumulator(3);
         pc.setAddress(1);
         nop = new NOP(memory,acc,pc);
         Assert.assertThat(nop.getAcc().getAcumulator(), equalTo(3));
         nop.run();
         Assert.assertThat(nop.getAcc().getAcumulator(), equalTo(3));
+
+    }
+
+    @Test
+    public void nop() {
+        acc.setAcumulator(4);
+        pc.setAddress(1);
+        nop = new NOP(memory,acc,pc);
+        nop.run();
+        Assert.assertThat(nop.getAcc().getAcumulator(), equalTo(3));
+        Assert.assertThat(nop.getAcc().getAcumulator(), equalTo(2));
 
     }
 

@@ -32,9 +32,9 @@ public class LDATest {
     }
 
     @Test
-    public void create() throws WrongPositionMemoryException {
+    public void validCommand()  {
         acc.setAcumulator(3);
-        pc.setAddress(2);
+        this.pc.setAddress(2);
         lda = new LDA(memory,acc,pc);
 
         Assert.assertThat(acc.getAcumulator(), equalTo(3));
@@ -42,6 +42,5 @@ public class LDATest {
         Assert.assertThat(lda.getAcc().getAcumulator(), equalTo(7));
 
     }
-
 
 }

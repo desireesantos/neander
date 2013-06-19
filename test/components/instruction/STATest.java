@@ -31,7 +31,6 @@ public class STATest {
         memory.setMemory(3, "00000000");
     }
 
-
     @Test
     public void validCommand() {
         acc.setAcumulator(49);
@@ -44,15 +43,12 @@ public class STATest {
 
     }
 
-
     @Test (expected = WrongPositionMemoryException.class)
-    public void inValidCommand() {
+    public void inValidCommandCallWrongPositionException() {
         acc.setAcumulator(49);
         pc.setAddress(-1);
         sta = new STA(memory,acc,pc);
         sta.run();
-
-
     }
 
 }

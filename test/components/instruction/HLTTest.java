@@ -29,7 +29,7 @@ public class HLTTest {
     }
 
     @Test
-    public void testCreate() throws Exception, WrongPositionMemoryException {
+    public void testCreate()  {
 
         Assert.assertThat(pc.getAddress(), equalTo(0));
         hlt.run();
