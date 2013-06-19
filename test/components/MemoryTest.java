@@ -47,14 +47,9 @@ public class MemoryTest {
         Assert.assertThat(memory.readAdressInstruction(4), equalTo(15));
     }
 
+
     @Test(expected = WrongPositionMemoryException.class)
     public void exceptionWhenSettingIndexNumberOutOfMemory() {
-
-        System.out.println("Primeira");
-        memory.getValueMemoryInThisPosition(-1);
-        System.out.println("Passei");
         memory.setMemory(-1,"00010000");
-        System.out.println("Passei 2");
-        memory.setMemory(49,"00010000");
     }
 }

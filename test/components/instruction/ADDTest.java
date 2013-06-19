@@ -27,21 +27,17 @@ public class ADDTest {
         pc = new ProgramCounter();
         memory.setMemory(0, "00100000");
         memory.setMemory(1, "00000010");
-        memory.setMemory(2, "00000111");
+        memory.setMemory(2, "00000001");
     }
-
 
     @Test
     public void hasAddValueInMemory(){
-        acc.setAcumulator(3);
+        acc.setAcumulator(2);
         pc.setAddress(1);
         add = new ADD(memory,acc,pc);
-        Assert.assertThat(add.getAcc().getAcumulator(), equalTo(3));
+        Assert.assertThat(add.getAcc().getAcumulator(), equalTo(2));
         add.run();
         Assert.assertThat(add.getAcc().getAcumulator(), equalTo(10));
 
     }
-
-
-
 }
