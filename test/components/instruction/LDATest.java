@@ -32,7 +32,7 @@ public class LDATest {
     }
 
     @Test
-    public void validCommand()  {
+    public void validCommandToLdaCommand()  {
         acc.setAcumulator(3);
         this.pc.setAddress(2);
         lda = new LDA(memory,acc,pc);

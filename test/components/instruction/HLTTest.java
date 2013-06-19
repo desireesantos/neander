@@ -29,8 +29,7 @@ public class HLTTest {
     }
 
     @Test
-    public void testCreate()  {
-
+    public void executeHLTCommnand()  {
         Assert.assertThat(pc.getAddress(), equalTo(0));
         hlt.run();
         Assert.assertThat(hlt.getPc().getAddress(), equalTo(16));

@@ -32,13 +32,13 @@ public class ADDTest {
     }
 
     @Test
-    public void hasAddValueInMemory(){
+    public void executeAddCommand(){
         acc.setAcumulator(2);
         pc.setAddress(1);
         add = new ADD(memory,acc,pc);
+
         Assert.assertThat(add.getAcc().getAcumulator(), equalTo(2));
         add.run();
-        Assert.assertThat(add.getAcc().getAcumulator(), equalTo(3));
-
+        Assert.assertThat(add.getAcc().getAcumulator(), equalTo(4));
     }
 }
