@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static components.Memory.*;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 /**
@@ -18,6 +19,7 @@ public class HLTTest {
     Acumulator acc;
     ProgramCounter pc;
     HLT hlt;
+    int lastPositionInMemory = MEMORY_SIZE- 1 ;
 
     @Before
     public void createComponents(){
@@ -31,5 +33,6 @@ public class HLTTest {
     public void executeHLTCommnand()  {
         Assert.assertThat(pc.getValue(), equalTo(0));
         hlt.execute();
+        Assert.assertThat(pc.getValue(), equalTo(lastPositionInMemory));
     }
 }

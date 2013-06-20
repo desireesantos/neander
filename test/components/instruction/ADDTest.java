@@ -33,7 +33,10 @@ public class ADDTest {
     public void executeAddCommand(){
         acc.setValue(2);
         pc.setValue(1);
-        add = new ADD(memory,acc,pc);
 
+
+        add = new ADD(memory,acc,pc);
+        add.execute();
+        Assert.assertThat(acc.getValue(),equalTo(4));
     }
 }

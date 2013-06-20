@@ -35,8 +35,8 @@ public class LDATest {
     public void validCommandToLdaCommand()  {
         acc.setValue(3);
         this.pc.setValue(2);
-        lda = new LDA(memory,acc,pc);
 
+        lda = new LDA(memory,acc,pc);
         Assert.assertThat(acc.getValue(), equalTo(3));
         lda.execute();
     }
