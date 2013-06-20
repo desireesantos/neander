@@ -19,11 +19,11 @@ public class ProgramCounter {
     public ProgramCounter() {
     }
 
-    public int getAddress() {
+    public int getValue() {
         return address;
     }
 
-    public void setAddress(int address) throws WrongPositionMemoryException {
+    public void setValue(int address) throws WrongPositionMemoryException {
         if(isValid(address))
             this.address = address;
         else

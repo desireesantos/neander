@@ -3,12 +3,13 @@ package processor;
 import components.Acumulator;
 import components.Memory;
 import components.ProgramCounter;
-import control.Bus;
+import components.instruction.Instruction;
 import components.WrongPositionMemoryException;
 import factory.InstructionFactory;
 import io.Monitor;
 
 import static components.Memory.MEMORY_SIZE;
+import static components.Memory.WRONG_POSITION;
 
 /**
  * User: dsantos
@@ -30,13 +31,13 @@ public class  Processor {
     private void processInstructions() throws WrongPositionMemoryException {
         final int  READ_ONLY_INSTRUCTIONS = 2;
 
-        for (int i = 0; i <= MEMORY_SIZE -1; i= i + READ_ONLY_INSTRUCTIONS) {
-            pc.setAddress(i);
+        int count=0;
+        while (count < memory.getMemory().length ) {
+            pc.setValue(count);
             String nameInstruction = currentInstructionName(memory, pc);
+            processInstructions(nameInstruction);
 
-            if(isNotNull(nameInstruction))
-                processInstructions(nameInstruction);
-            else break;
+            count += READ_ONLY_INSTRUCTIONS;
         }
 
         Monitor monitor = new Monitor();
@@ -44,21 +45,14 @@ public class  Processor {
     }
 
     private void processInstructions(String nameInstruction) throws WrongPositionMemoryException {
-        InstructionFactory instructionFactory = new InstructionFactory();
-        Bus bus = instructionFactory.execute(memory,acc,pc,nameInstruction).run();
-        updateComponents(bus);
+        InstructionFactory instructionFactory = new InstructionFactory(memory, acc, pc);
+        Instruction  instruction = instructionFactory.create(nameInstruction) ;
+        instruction.execute();
     }
 
-    private boolean isNotNull(String nameInstruction) {
-        return nameInstruction != null;
-    }
 
     private String currentInstructionName(Memory memory, ProgramCounter pc) {
-        return memory.instructionName(memory.getValueMemoryInThisPosition(pc.getAddress()));
+        return memory.instructionName(memory.getValueMemoryInThisPosition(pc.getValue()));
     }
 
-    private void updateComponents(Bus instruction) {
-        this.memory = instruction.getMemory();
-        this.acc = instruction.getAcc();
-    }
 }

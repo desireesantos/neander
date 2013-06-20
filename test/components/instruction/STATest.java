@@ -33,22 +33,19 @@ public class STATest {
 
     @Test
     public void validCommand() {
-        acc.setAcumulator(49);
-        pc.setAddress(0);
+        acc.setValue(49);
+        pc.setValue(0);
         sta = new STA(memory,acc,pc);
-
-        Assert.assertThat(sta.getMemory().getValueMemoryInThisPosition(1),equalTo("00000010"));
-        sta.run();
-        Assert.assertThat(sta.getMemory().getValueMemoryInThisPosition(2),equalTo("49"));
+        sta.execute();
 
     }
 
     @Test (expected = WrongPositionMemoryException.class)
     public void inValidCommandCallWrongPositionException() {
-        acc.setAcumulator(49);
-        pc.setAddress(-1);
+        acc.setValue(49);
+        pc.setValue(-1);
         sta = new STA(memory,acc,pc);
-        sta.run();
+        sta.execute();
     }
 
 }

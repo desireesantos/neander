@@ -15,24 +15,29 @@ import static components.instruction.enumcodeinstructions.CodeInstruction.*;
  */
 public class InstructionFactory {
 
-    public Instruction execute(Memory memory, Acumulator acc, ProgramCounter pc, String typeInstruction) {
-        Instruction instruction = null;
+    private Memory memory;
+    private Acumulator acc;
+    private ProgramCounter pc;
 
+    public InstructionFactory(Memory memory, Acumulator acc, ProgramCounter pc) {
+        this.memory = memory;
+        this.acc = acc;
+        this.pc = pc;
+    }
 
-        if (typeInstruction.equals(NOP.toString()))
-            instruction = new NOP(memory,acc,pc);
-        else if(typeInstruction.equals(LDA.toString()))
-            instruction = new LDA(memory,acc,pc);
+    public Instruction create(String typeInstruction) {
+
+         if(typeInstruction.equals(LDA.toString()))
+            return new LDA(memory,acc,pc);
         else if(typeInstruction.equals(ADD.toString()))
-            instruction = new ADD(memory,acc,pc);
+            return new ADD(memory,acc,pc);
         else if(typeInstruction.equals(HLT.toString()))
-            instruction =  new HLT(memory,acc,pc);
+            return  new HLT(memory,acc,pc);
         else if(typeInstruction.equals(STA.toString()))
-            instruction =  new STA(memory,acc,pc);
-        else
-        {
-            new WrongInstructionException();
-        }
-        return instruction;
+            return  new STA(memory,acc,pc);
+
+        return new NOP(memory,acc,pc);
+
+
     }
 }

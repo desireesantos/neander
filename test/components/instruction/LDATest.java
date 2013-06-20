@@ -33,13 +33,12 @@ public class LDATest {
 
     @Test
     public void validCommandToLdaCommand()  {
-        acc.setAcumulator(3);
-        this.pc.setAddress(2);
+        acc.setValue(3);
+        this.pc.setValue(2);
         lda = new LDA(memory,acc,pc);
 
-        Assert.assertThat(acc.getAcumulator(), equalTo(3));
-        lda.run();
-        Assert.assertThat(lda.getAcc().getAcumulator(), equalTo(7));
+        Assert.assertThat(acc.getValue(), equalTo(3));
+        lda.execute();
     }
 
 }

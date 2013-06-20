@@ -18,35 +18,35 @@ public class InstructionFactoryTest {
     Memory memory = new Memory(new String[8]);
     ProgramCounter pc = new ProgramCounter();
     Acumulator acc = new Acumulator();
-    InstructionFactory factory = new InstructionFactory();
+    InstructionFactory factory = new InstructionFactory(memory,acc,pc);
 
     @Test
     public void createNOP()  {
         String type = String.valueOf(CodeInstruction.NOP);
-        Assert.assertTrue(factory.execute(memory, acc, pc, type) instanceof NOP);
+        Assert.assertTrue(factory.create(type) instanceof NOP);
     }
 
     @Test
     public void createSTA()  {
         String type = String.valueOf(CodeInstruction.STA);
-        Assert.assertThat((factory.execute(memory,acc, pc, type)).getClass(), is(STA.class.getClass()));
+        Assert.assertTrue(factory.create(type) instanceof STA);
     }
 
     @Test
     public void createLDA()  {
         String type = String.valueOf(CodeInstruction.LDA);
-        Assert.assertThat((factory.execute(memory,acc, pc, type)).getClass(), is(LDA.class.getClass()));
+        Assert.assertTrue(factory.create(type) instanceof LDA);
     }
 
     @Test
     public void createADD()  {
         String type = String.valueOf(CodeInstruction.ADD);
-        Assert.assertThat((factory.execute(memory,acc, pc, type)).getClass(), is(ADD.class.getClass()));
+        Assert.assertTrue(factory.create(type) instanceof ADD);
     }
 
     @Test
     public void createHLT()  {
         String type = String.valueOf(CodeInstruction.HLT);
-        Assert.assertThat((factory.execute(memory,acc, pc, type)).getClass(), is(HLT.class.getClass()));
+        Assert.assertTrue(factory.create(type) instanceof HLT);
     }
 }

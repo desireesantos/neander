@@ -23,21 +23,21 @@ public class ProgramCounterTest {
 
     @Test
     public void validAddress(){
-        Assert.assertThat(pc.getAddress(), equalTo(0));
-        pc.setAddress(8);
-        Assert.assertThat(pc.getAddress(), equalTo(8));
-        pc.setAddress(16);
-        Assert.assertThat(pc.getAddress(), equalTo(16));
+        Assert.assertThat(pc.getValue(), equalTo(0));
+        pc.setValue(8);
+        Assert.assertThat(pc.getValue(), equalTo(8));
+        pc.setValue(16);
+        Assert.assertThat(pc.getValue(), equalTo(16));
     }
 
 
     @Test (expected =WrongPositionMemoryException.class )
     public void throwsExceptionWhenSettingAddressInPositionOutOfMemory() throws WrongPositionMemoryException {
-        pc.setAddress(Memory.MEMORY_SIZE + 1);
+        pc.setValue(Memory.MEMORY_SIZE + 1);
     }
 
     @Test (expected =WrongPositionMemoryException.class )
     public void throwsExceptionWhenSettingNegativeIndexInMemory() throws WrongPositionMemoryException {
-        pc.setAddress(-2);
+        pc.setValue(-2);
     }
 }

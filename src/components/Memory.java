@@ -11,8 +11,9 @@ public class Memory {
     public static final int MEMORY_SIZE = 16;
     public static final int DECIMAL_BASE = 2;
     public static final int WRONG_POSITION = 0;
-    public static final String NO_NAME = null;
+    public static final String NO_INSTRUCTION = "00000000";
     public static final int MIN_POSITION = 0;
+    private static final String NO_NAME = null;
     private String[] memory = new String[MEMORY_SIZE];
 
     public Memory(String[] memory) {
@@ -63,7 +64,7 @@ public class Memory {
                 return codeInstruction.toString();
             }
         }
-        return NO_NAME;
+        return NO_INSTRUCTION;
     }
 
     private int stringInBinaryFormatBecomeInt(String s) {

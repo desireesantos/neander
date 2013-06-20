@@ -31,12 +31,9 @@ public class ADDTest {
 
     @Test
     public void executeAddCommand(){
-        acc.setAcumulator(2);
-        pc.setAddress(1);
+        acc.setValue(2);
+        pc.setValue(1);
         add = new ADD(memory,acc,pc);
 
-        Assert.assertThat(add.getAcc().getAcumulator(), equalTo(2));
-        add.run();
-        Assert.assertThat(add.getAcc().getAcumulator(), equalTo(4));
     }
 }

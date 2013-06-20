@@ -15,11 +15,11 @@ public class Acumulator {
     public Acumulator() {
     }
 
-    public int getAcumulator() {
+    public int getValue() {
         return acumulator;
     }
 
-    public void setAcumulator(int acumulator) {
+    public void setValue(int acumulator) {
         this.acumulator = acumulator;
     }
 

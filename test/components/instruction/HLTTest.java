@@ -24,13 +24,12 @@ public class HLTTest {
         memory = new Memory(new String[00100000]);
         acc = new Acumulator();
         pc = new ProgramCounter();
-        hlt = new HLT();
+        hlt = new HLT(memory,acc,pc);
     }
 
     @Test
     public void executeHLTCommnand()  {
-        Assert.assertThat(pc.getAddress(), equalTo(0));
-        hlt.run();
-        Assert.assertThat(hlt.getPc().getAddress(), equalTo(15));
+        Assert.assertThat(pc.getValue(), equalTo(0));
+        hlt.execute();
     }
 }

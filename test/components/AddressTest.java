@@ -15,12 +15,12 @@ public class AddressTest {
 
     @Test
     public void validAddress() throws WrongPositionMemoryException {
-        address.setAddress(7);
-        Assert.assertThat(address.getAddress(), equalTo(7));
+        address.setValue(7);
+        Assert.assertThat(address.getValue(), equalTo(7));
     }
 
     @Test (expected = WrongPositionMemoryException.class)
     public void noValidAddress() throws WrongPositionMemoryException{
-        address.setAddress(17);
+        address.setValue(17);
     }
 }
